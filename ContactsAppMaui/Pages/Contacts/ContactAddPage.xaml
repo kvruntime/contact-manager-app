@@ -7,7 +7,7 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save"/>
+        <ToolbarItem Text="Save" Command="{Binding AddContactCommand}"/>
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="auto,*" Padding="5" Grid.Row="0">
@@ -18,10 +18,10 @@
             </Grid>
         </ContentView>
         <VerticalStackLayout Grid.Row="1" Spacing="10" Padding="10,5">
-            <Entry Placeholder="Name"/>
-            <Entry Placeholder="Email"/>
-            <Entry Placeholder="Phone"/>
-            <Entry Placeholder="Address"/>
+            <Entry Placeholder="Name" Text="{Binding NewContact.Name}"/>
+            <Entry Placeholder="Email" Text="{Binding NewContact.Email}"/>
+            <Entry Placeholder="Phone" Text="{Binding NewContact.Phone}"/>
+            <Entry Placeholder="Address" Text="{Binding NewContact.Address}"/>
             <Editor MinimumHeightRequest="100" Placeholder="Notes" />
         </VerticalStackLayout>
 

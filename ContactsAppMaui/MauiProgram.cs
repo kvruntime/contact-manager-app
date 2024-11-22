@@ -31,10 +31,12 @@ namespace ContactsAppMaui
             builder.Services.AddSingleton<ContactsPage>();
             builder.Services.AddTransient<ContactEditPage>();
             builder.Services.AddTransient<ContactAddPage>();
+            builder.Services.AddTransient<ContactDetailPage>();
 
             builder.Services.AddSingleton<ContactsViewmodel>();
             builder.Services.AddTransient<ContactDetailsViewmodel>();
             builder.Services.AddTransient<ContactAddViewmodel>();
+            builder.Services.AddTransient<ContactDetailsViewmodel>();
             
 
             return builder.Build();

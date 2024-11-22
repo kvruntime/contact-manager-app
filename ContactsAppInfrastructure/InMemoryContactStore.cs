@@ -12,8 +12,9 @@ namespace ContactsAppInfrastructure
     {
         List<ContactEntity> contacts = new()
         {
-            new ContactEntity{Name="Viktor", Email="viktor@gmail.com", Address="Agoe", Phone="99999999"},
-            new ContactEntity{Name="Espoir", Email="espoir@proton.me", Address="Cotonou", Phone="99999999"},
+            new ContactEntity{Firstname="Viktor", Email="viktor@gmail.com", Address="Agoe", Phone="99999999"},
+            new ContactEntity{Firstname="Espoir", Email="espoir@proton.me", Address="Cotonou", Phone="79797979"},
+            new ContactEntity{Firstname="Jean", Email="jean@proton.me", Address="There", Phone="98989898"},
         };
 
         public async Task Add(ContactEntity entity)

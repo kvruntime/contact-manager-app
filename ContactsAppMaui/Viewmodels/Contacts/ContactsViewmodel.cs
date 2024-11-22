@@ -70,11 +70,38 @@ namespace ContactsAppMaui.Viewmodels.Contacts
         }
         [RelayCommand]
         public async Task GotoAddContact() => await Shell.Current.GoToAsync(nameof(ContactAddPage));
+        [RelayCommand]
+        public async Task GotoDetailContact(ContactEntity contact)
+        {
+            if (contact != null)
+            {
+                await Shell.Current.GoToAsync(
+                    nameof(ContactDetailPage),
+                    true,
+                    new Dictionary<string, object> { {
+                        "contact", contact
+                    } }
+                );
+            }
+        }
+        [RelayCommand]
+        public async Task DeleteContact(ContactEntity contact)
+        {
+            await Shell.Current.DisplayAlert("dsfdsfdsf", $"{contact is null }", "Ok");
+            if (contact != null)
+            {
+                await _usecase.DeleteContact(contact);
+                await LoadContacts();
+            }
+        }
 
         async void IRecipient<ContactAdded>.Receive(ContactAdded message)
         {
             await _usecase.CreateNewContact(message.Value);
+            await LoadContacts();
         }
+
+
     }
 }
 

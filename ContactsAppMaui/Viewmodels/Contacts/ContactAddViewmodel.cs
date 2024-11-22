@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using ContactsAppDomain.Entities;
+using ContactsAppMaui.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace ContactsAppMaui.Viewmodels.Contacts
         [RelayCommand]
         public async Task AddContact()
         {
-            WeakReferenceMessenger.Default.Send(NewContact);
+            WeakReferenceMessenger.Default.Send(new ContactAdded(NewContact));
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

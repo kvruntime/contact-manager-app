@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactsAppMaui.Controls.Contacts.ContactCard"
+             xmlns:ctr="clr-namespace:ContactsAppMaui.Controls.Contacts"
+             x:DataType="ctr:ContactCard">
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <Border Stroke="WhiteSmoke"
+                    Background="WhiteSmoke"
+                    MinimumHeightRequest="75"
+                    BindingContext="{x:Reference this}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="auto, *">
+                    <Image HeightRequest="100"
+                           Grid.Column="0"
+                           WidthRequest="100"
+                           Source="dotnet_bot.png"/>
+                    <VerticalStackLayout Grid.Column="1"
+                                         VerticalOptions="Center">
+                        <Label HorizontalOptions="Start"
+                               Text="{TemplateBinding Firstname }"/>
+                        <Label HorizontalOptions="Start"
+                               Text="{TemplateBinding Phone}"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+
+</ContentView>

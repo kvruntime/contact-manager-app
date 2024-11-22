@@ -9,6 +9,7 @@ namespace ContactsAppMaui
             InitializeComponent();
             Routing.RegisterRoute(nameof(ContactEditPage), typeof(ContactEditPage));
             Routing.RegisterRoute(nameof(ContactAddPage), typeof(ContactAddPage));
+            Routing.RegisterRoute(nameof(ContactDetailPage), typeof(ContactDetailPage));
         }
     }
 }

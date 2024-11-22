@@ -21,7 +21,7 @@ namespace ContactsAppApplication.Usecases
             var contacts = await _contactRepo.GetAll();
             if (filterText is null) return contacts;
 
-            var filteredContacts = contacts.Where(c => !String.IsNullOrWhiteSpace(c.Name) && c.Name.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
+            var filteredContacts = contacts.Where(c => !String.IsNullOrWhiteSpace(c.Firstname) && c.Firstname.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
             if (filteredContacts is null || filteredContacts.Count <= 0)
                 return contacts;
             return filteredContacts;
@@ -33,7 +33,10 @@ namespace ContactsAppApplication.Usecases
         public async Task CreateNewContact(ContactEntity contact)
         {
             await _contactRepo.Add(contact);
-            await _contactRepo.Save();
+        }
+        public async Task DeleteContact(ContactEntity contact)
+        {
+            await _contactRepo.Remove(contact);
         }
     }
 }

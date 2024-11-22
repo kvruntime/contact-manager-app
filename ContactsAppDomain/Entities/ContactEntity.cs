@@ -8,9 +8,11 @@ namespace ContactsAppDomain.Entities
 {
     public class ContactEntity : BaseEntity
     {
-        public string Name { get; set; }=string.Empty;
-        public string Email { get; set; } = string.Empty;
+        public string Firstname { get; set; } = string.Empty;
+        public string? Lastname { get; set; }
+
+        public string? Email { get; set; }
         public string Phone { get; set; } = string.Empty;
-        public string Address { get; set; } = string.Empty;
+        public string? Address { get; set; }
     }
 }

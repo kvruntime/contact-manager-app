@@ -72,6 +72,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\Contacts\ContactCard.xaml.cs">
+	    <DependentUpon>ContactCard.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\ContactsPage.xaml.cs">
 	    <DependentUpon>ContactsPage.xaml</DependentUpon>
 	  </Compile>

@@ -3,49 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:entities="clr-namespace:ContactsAppDomain.Entities;assembly=ContactsAppDomain"
              xmlns:vms="clr-namespace:ContactsAppMaui.Viewmodels.Contacts"
+             xmlns:ctr="clr-namespace:ContactsAppMaui.Controls.Contacts"
              x:DataType="vms:ContactsViewmodel"
              x:Class="ContactsAppMaui.Pages.ContactsPage"
              Title="{Binding Title}">
 
-    <ScrollView>
-        <Grid RowDefinitions="auto,*,auto"
-            Padding="30,0"
-            Margin="5"
-              RowSpacing="5"
-            VerticalOptions="Fill">
-            <Grid ColumnDefinitions="*,auto" Grid.Row="0" Padding="2" ColumnSpacing="5">
-                <SearchBar Placeholder="Search for contacts" SearchCommand="{Binding FilterContactCommand}"
-                           Text="{Binding FilterText}"
-                           SearchCommandParameter="{Binding FilterText}"/>
-                <Button Text="Load All" Grid.Column="1" Command="{Binding LoadContactsCommand}"/>
-            </Grid>
+    <Grid RowDefinitions="auto,*,auto"
+          Padding="30,0"
+          Margin="5"
+          RowSpacing="5"
+          VerticalOptions="Fill">
+        <Grid ColumnDefinitions="*,auto"
+              Grid.Row="0"
+              Padding="2"
+              ColumnSpacing="5">
+            <SearchBar Placeholder="Search for contacts"
+                       SearchCommand="{Binding FilterContactCommand}"
+                       Text="{Binding FilterText}"
+                       SearchCommandParameter="{Binding FilterText}"/>
+            <Button Text="Load All"
+                    Grid.Column="1"
+                    Command="{Binding LoadContactsCommand}"/>
+        </Grid>
 
-            <CollectionView VerticalOptions="Fill" 
-                            SelectionMode="Single"
-                            ItemsSource="{Binding Contacts}"
-                            Grid.Row="1">
-                <CollectionView.ItemTemplate  >
-                    <DataTemplate>
+        <ScrollView Grid.Row="1">
+            <CollectionView SelectionMode="Single"
+                            ItemsSource="{Binding Contacts}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="entities:ContactEntity">
                         <SwipeView Margin="10">
                             <SwipeView.RightItems>
-                                <SwipeItem Text="Delete" BackgroundColor="Red" IsDestructive="True"/>
+                                <SwipeItems>
+                                    <SwipeItem Text="Details"
+                                               BackgroundColor="Green"
+                                               CommandParameter="{Binding .}"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vms:ContactsViewmodel}}, Path=GotoDetailContactCommand}"/>
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="Red"
+                                               CommandParameter="{Binding .}"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vms:ContactsViewmodel}}, Path=DeleteContactCommand}"/>
+                                </SwipeItems>
                             </SwipeView.RightItems>
-
-                            <Border >
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vms:ContactsViewmodel}
-                                        },  x:DataType=vms:ContactsViewmodel, Path=GotoEditContactCommand }"
-                                    CommandParameter="{Binding .}"
-                                    />
-                                </Border.GestureRecognizers>
-                                <VerticalStackLayout x:DataType="entities:ContactEntity" Padding="10" Margin="5">
-                                    <Label Text="{Binding Name}"/>
-                                    <Label Text="{Binding Email}"/>
-                                    <Label Text="{Binding Phone}"/>
-                                </VerticalStackLayout>
-
-                            </Border>
+                            <ctr:ContactCard Firstname="{Binding Firstname}"
+                                    Phone="{Binding Phone}"/>
                         </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -57,18 +57,15 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+        </ScrollView>
 
 
 
-            <VerticalStackLayout Grid.Row="2">
-                <!--<Button
-     Text="Search Contact" 
-     SemanticProperties.Hint="Counts the number of times you click"
-     Command="{Binding LoadContactsCommand}"
-     HorizontalOptions="Fill" />-->
-                <Button Text="Add new" Command="{Binding GotoAddContactCommand}"/>
-            </VerticalStackLayout>
-        </Grid>
-    </ScrollView>
-
+        <VerticalStackLayout Grid.Row="2">
+            <Button Text="Add new"
+                    HorizontalOptions="End"
+                    Margin="0,10,0,0"
+                    Command="{Binding GotoAddContactCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

@@ -12,17 +12,30 @@
             <VerticalStackLayout Spacing="10">
                 <Label Text="Contact Manager"/>
                 <Image
-    Source="dotnet_bot.png"
-    HeightRequest="185"
-    Aspect="AspectFit"
-    SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+                    Source="dotnet_bot.png"
+                    HeightRequest="185"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="dot net bot in a hovercraft number nine"/>
             </VerticalStackLayout>
         </Border>
     </Shell.FlyoutHeader>
 
+    <ShellContent Title="Dashboard"
+                  ContentTemplate="{DataTemplate pages:DashboardPage}"
+                  Route="DashboardPage"/>
+
     <ShellContent
-        Title="Home"
+        Title="Local Contact Page"
+        Icon="dotnet_bot.png"
         ContentTemplate="{DataTemplate pages:ContactsPage}"
-        Route="ContactsPage" />
+        Route="ContactsPage"/>
+
+    <Shell.FlyoutFooter>
+        <Grid Margin="5,10,5,10">
+            <Label Text="contact application @2024"
+                   TextColor="Gray"
+                    HorizontalOptions="End"/>
+        </Grid>
+    </Shell.FlyoutFooter>
 
 </Shell>

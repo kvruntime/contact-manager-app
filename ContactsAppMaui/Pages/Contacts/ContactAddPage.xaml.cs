@@ -9,4 +9,5 @@ public partial class ContactAddPage : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
+   
 }

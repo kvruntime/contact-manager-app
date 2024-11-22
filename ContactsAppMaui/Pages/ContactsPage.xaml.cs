@@ -16,4 +16,9 @@ public partial class ContactsPage : ContentPage
         BindingContext = vm;
 
     }
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+        await (BindingContext as ContactsViewmodel).LoadContacts();
+    }
 }

@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ContactsAppMaui.Pages.Contacts.ContactEditPage"
              xmlns:vms="clr-namespace:ContactsAppMaui.Viewmodels.Contacts"
-             x:DataType="vms:ContactDetailsViewmodel"
+             x:DataType="vms:ContactEditViewmodel"
              Title="ContactEditPage">
-    <VerticalStackLayout VerticalOptions="FillAndExpand">
+    <VerticalStackLayout>
 
         <Label Text="Name"/>
-        <Label  Text="{Binding ContactEntity.Name}"/>
+        <Label  Text="{Binding ContactEntity.Firstname}"/>
         <Label Text="Email"/>
         <Label  Text="{Binding ContactEntity.Email}"/>
         <Label Text="Address"/>
