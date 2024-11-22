@@ -1,6 +1,7 @@
 ﻿using ContactsAppApplication.Usecases;
 using ContactsAppDomain.Interfaces;
 using ContactsAppInfrastructure;
+using ContactsAppMaui.Data;
 using ContactsAppMaui.Pages;
 using ContactsAppMaui.Pages.Contacts;
 using ContactsAppMaui.Viewmodels.Contacts;
@@ -25,7 +26,8 @@ namespace ContactsAppMaui
     		builder.Logging.AddDebug();
 #endif
             
-            builder.Services.AddSingleton<IContactRepository, InMemoryContactStore>();
+            // builder.Services.AddSingleton<IContactRepository, InMemoryContactStore>();
+            builder.Services.AddSingleton<IContactRepository, SqliteContactStore>();
             builder.Services.AddSingleton<UserUsecases>();
 
             builder.Services.AddSingleton<ContactsPage>();
@@ -37,6 +39,13 @@ namespace ContactsAppMaui
             builder.Services.AddTransient<ContactDetailsViewmodel>();
             builder.Services.AddTransient<ContactAddViewmodel>();
             builder.Services.AddTransient<ContactDetailsViewmodel>();
+
+            builder.Services.AddDbContext<AppDbContext>(o=>{
+            });
+            var dbContext =new  AppDbContext();
+            dbContext.Database.EnsureCreated();
+            dbContext.Dispose();
+
             
 
             return builder.Build();

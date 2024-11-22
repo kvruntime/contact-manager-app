@@ -23,20 +23,23 @@ namespace ContactsAppApplication.Usecases
 
             var filteredContacts = contacts.Where(c => !String.IsNullOrWhiteSpace(c.Firstname) && c.Firstname.StartsWith(filterText, StringComparison.OrdinalIgnoreCase)).ToList();
             if (filteredContacts is null || filteredContacts.Count <= 0)
-                return contacts;
+                return new List<ContactEntity>() { };
             return filteredContacts;
         }
         public async Task<ContactEntity>? RetrieveContactInformations(Guid id)
         {
             return await _contactRepo.Get(id);
+
         }
         public async Task CreateNewContact(ContactEntity contact)
         {
             await _contactRepo.Add(contact);
+            await _contactRepo.Save();
         }
         public async Task DeleteContact(ContactEntity contact)
         {
             await _contactRepo.Remove(contact);
+            await _contactRepo.Save();
         }
     }
 }
