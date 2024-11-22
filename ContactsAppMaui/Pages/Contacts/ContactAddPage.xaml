@@ -5,10 +5,25 @@
              xmlns:vms="clr-namespace:ContactsAppMaui.Viewmodels.Contacts"
              x:DataType="vms:ContactAddViewmodel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="auto,*" Padding="5" Grid.Row="0">
+        <ContentView MinimumHeightRequest="100">
+            <Grid RowDefinitions="*, auto" HorizontalOptions="Center">
+                <Image HeightRequest="75" Source="dotnet_bot.png" Aspect="AspectFit"/>
+                <Button Text="Add picture" Grid.Row="1" HorizontalOptions="Center" />
+            </Grid>
+        </ContentView>
+        <VerticalStackLayout Grid.Row="1" Spacing="10" Padding="10,5">
+            <Entry Placeholder="Name"/>
+            <Entry Placeholder="Email"/>
+            <Entry Placeholder="Phone"/>
+            <Entry Placeholder="Address"/>
+            <Editor MinimumHeightRequest="100" Placeholder="Notes" />
+        </VerticalStackLayout>
+
+    </Grid>
 </ContentPage>
