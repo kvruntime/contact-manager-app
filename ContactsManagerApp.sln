@@ -3,10 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAppMaui", "ContactsAppMaui\ContactsAppMaui.csproj", "{20778903-A8A8-4F7A-906A-670783B11272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAppDomain", "ContactsAppDomain\ContactsAppDomain.csproj", "{B3663E8C-CE31-4E98-8469-63788E954CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAppApplication", "ContactsAppApplication\ContactsAppApplication.csproj", "{E3D216E6-3A98-49CA-A9A1-BEA1CB6856B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAppInfrastructure", "ContactsAppInfrastructure\ContactsAppInfrastructure.csproj", "{FB49D330-CEE5-4243-8BE0-9B48F65A38B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20778903-A8A8-4F7A-906A-670783B11272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20778903-A8A8-4F7A-906A-670783B11272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20778903-A8A8-4F7A-906A-670783B11272}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{20778903-A8A8-4F7A-906A-670783B11272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20778903-A8A8-4F7A-906A-670783B11272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3663E8C-CE31-4E98-8469-63788E954CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3663E8C-CE31-4E98-8469-63788E954CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3663E8C-CE31-4E98-8469-63788E954CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3663E8C-CE31-4E98-8469-63788E954CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D216E6-3A98-49CA-A9A1-BEA1CB6856B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D216E6-3A98-49CA-A9A1-BEA1CB6856B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D216E6-3A98-49CA-A9A1-BEA1CB6856B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D216E6-3A98-49CA-A9A1-BEA1CB6856B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB49D330-CEE5-4243-8BE0-9B48F65A38B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB49D330-CEE5-4243-8BE0-9B48F65A38B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB49D330-CEE5-4243-8BE0-9B48F65A38B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB49D330-CEE5-4243-8BE0-9B48F65A38B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

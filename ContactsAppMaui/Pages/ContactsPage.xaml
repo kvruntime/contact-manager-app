@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entities="clr-namespace:ContactsAppDomain.Entities;assembly=ContactsAppDomain"
+             xmlns:vms="clr-namespace:ContactsAppMaui.Viewmodels.Contacts"
+             x:DataType="vms:ContactsViewmodel"
+             x:Class="ContactsAppMaui.Pages.ContactsPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <Grid RowDefinitions="auto,*,auto"
+            Padding="30,0"
+            Margin="5"
+            VerticalOptions="Fill">
+            <Grid ColumnDefinitions="*,auto" Grid.Row="0">
+                <Entry Placeholder="look for contact" Grid.Column="0"
+                   Text="{Binding FilterText}"
+                       VerticalOptions="FillAndExpand"/>
+                <Button Text="Search" Grid.Column="1" Command="{Binding LoadContactsCommand}"/>
+
+            </Grid>
+
+
+            <CollectionView VerticalOptions="Fill" 
+                            SelectionMode="Single"
+                            ItemsSource="{Binding Contacts}"
+                            Grid.Row="1">
+                <CollectionView.ItemTemplate  >
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red" IsDestructive="True"/>
+                            </SwipeView.RightItems>
+
+                            <Border Margin="5">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vms:ContactsViewmodel}
+                                        },  x:DataType=vms:ContactsViewmodel, Path=GotoEditContactCommand }"
+                                    CommandParameter="{Binding .}"
+                                    />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout x:DataType="entities:ContactEntity"
+                     Padding="10"
+                     Margin="5">
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Email}"/>
+                                    <Label Text="{Binding Phone}"/>
+                                </VerticalStackLayout>
+
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout>
+                            <Label Text="No contact found!"/>
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+
+
+            <VerticalStackLayout Grid.Row="2">
+                <!--<Button
+     Text="Search Contact" 
+     SemanticProperties.Hint="Counts the number of times you click"
+     Command="{Binding LoadContactsCommand}"
+     HorizontalOptions="Fill" />-->
+                <Button Text="Add new" Command="{Binding GotoAddContactCommand}"/>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

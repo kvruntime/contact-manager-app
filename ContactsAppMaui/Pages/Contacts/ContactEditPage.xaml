@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactsAppMaui.Pages.Contacts.ContactEditPage"
+             xmlns:vms="clr-namespace:ContactsAppMaui.Viewmodels.Contacts"
+             x:DataType="vms:ContactDetailsViewmodel"
+             Title="ContactEditPage">
+    <VerticalStackLayout VerticalOptions="FillAndExpand">
+
+        <Label Text="Name"/>
+        <Label  Text="{Binding ContactEntity.Name}"/>
+        <Label Text="Email"/>
+        <Label  Text="{Binding ContactEntity.Email}"/>
+        <Label Text="Address"/>
+        <Label  Text="{Binding ContactEntity.Address}"/>
+        <Button Text="Delete" VerticalOptions="End"/>
+    </VerticalStackLayout>
+</ContentPage>
