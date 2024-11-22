@@ -30,5 +30,10 @@ namespace ContactsAppApplication.Usecases
         {
             return await _contactRepo.Get(id);
         }
+        public async Task CreateNewContact(ContactEntity contact)
+        {
+            await _contactRepo.Add(contact);
+            await _contactRepo.Save();
+        }
     }
 }

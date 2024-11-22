@@ -11,15 +11,14 @@
         <Grid RowDefinitions="auto,*,auto"
             Padding="30,0"
             Margin="5"
+              RowSpacing="5"
             VerticalOptions="Fill">
-            <Grid ColumnDefinitions="*,auto" Grid.Row="0">
-                <Entry Placeholder="look for contact" Grid.Column="0"
-                   Text="{Binding FilterText}"
-                       VerticalOptions="FillAndExpand"/>
-                <Button Text="Search" Grid.Column="1" Command="{Binding LoadContactsCommand}"/>
-
+            <Grid ColumnDefinitions="*,auto" Grid.Row="0" Padding="2" ColumnSpacing="5">
+                <SearchBar Placeholder="Search for contacts" SearchCommand="{Binding FilterContactCommand}"
+                           Text="{Binding FilterText}"
+                           SearchCommandParameter="{Binding FilterText}"/>
+                <Button Text="Load All" Grid.Column="1" Command="{Binding LoadContactsCommand}"/>
             </Grid>
-
 
             <CollectionView VerticalOptions="Fill" 
                             SelectionMode="Single"
@@ -27,12 +26,12 @@
                             Grid.Row="1">
                 <CollectionView.ItemTemplate  >
                     <DataTemplate>
-                        <SwipeView>
+                        <SwipeView Margin="10">
                             <SwipeView.RightItems>
                                 <SwipeItem Text="Delete" BackgroundColor="Red" IsDestructive="True"/>
                             </SwipeView.RightItems>
 
-                            <Border Margin="5">
+                            <Border >
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vms:ContactsViewmodel}
@@ -40,9 +39,7 @@
                                     CommandParameter="{Binding .}"
                                     />
                                 </Border.GestureRecognizers>
-                                <VerticalStackLayout x:DataType="entities:ContactEntity"
-                     Padding="10"
-                     Margin="5">
+                                <VerticalStackLayout x:DataType="entities:ContactEntity" Padding="10" Margin="5">
                                     <Label Text="{Binding Name}"/>
                                     <Label Text="{Binding Email}"/>
                                     <Label Text="{Binding Phone}"/>
